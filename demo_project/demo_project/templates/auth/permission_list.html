@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load resort %}
+{% block content %}
+    <table class="table">
+        {% auto_sort object_list %}
+        {% for object in object_list %}
+            {% if forloop.first %}
+                <thead>
+                    <tr>
+                        <th>{% sort_link 'Code Name' 'codename' %}</th>
+                        <th>{% sort_link 'Name' 'name' %}</th>
+                        <th>{% sort_link 'Content Type' 'content_type' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+            {% endif %}
+            <tr>
+                <td>{{ object.codename }}</td>
+                <td>{{ object.name }}</td>
+                <td>{{ object.content_type }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
